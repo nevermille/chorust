@@ -9,7 +9,6 @@ use squared_api_wrapper::response::StringObjectResponse;
 use squared_api_wrapper::traits::Api;
 use url_builder::URLBuilder;
 
-#[derive(Default)]
 pub struct Chorus {
     pub oauth_client_id: String,
 
@@ -131,5 +130,18 @@ impl Api for Chorus {
 
     fn get_root_url(&self) -> String {
         self.root_url.clone()
+    }
+}
+
+impl Default for Chorus {
+    fn default() -> Self {
+        Self {
+            oauth_client_id: Default::default(),
+            oauth_client_secret: Default::default(),
+            cpro_account: Default::default(),
+            bearer_token: Default::default(),
+            root_url: "sandbox-api.piste.gouv.fr".to_string(),
+            oauth_url: "sandbox-oauth.piste.gouv.fr".to_string(),
+        }
     }
 }
