@@ -12,11 +12,12 @@ pub fn main() {
         "The OAuth client secret",
         "CLIENT_SECRET",
     );
+    opts.optflag("", "sandbox", "Sandbox mode");
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,
         Err(_) => {
-            println!("{}", opts.usage("arkhineo_get"));
+            println!("{}", opts.usage("oauth_connect"));
             std::process::exit(1);
         }
     };
@@ -25,7 +26,7 @@ pub fn main() {
     let client_secret = matches.opt_str("z").unwrap();
 
     let mut chorus = Chorus::default();
-    chorus.switch_to_sandbox_mode(true);
+    chorus.switch_to_sandbox_mode(matches.opt_present("sandbox"));
     let response = chorus
         .connect_with_oauth(&client_id, &client_secret)
         .unwrap();

@@ -140,8 +140,8 @@ impl Default for Chorus {
             oauth_client_secret: Default::default(),
             cpro_account: Default::default(),
             bearer_token: Default::default(),
-            root_url: "sandbox-api.piste.gouv.fr".to_string(),
-            oauth_url: "sandbox-oauth.piste.gouv.fr".to_string(),
+            root_url: "api.piste.gouv.fr".to_string(),
+            oauth_url: "oauth.piste.gouv.fr".to_string(),
         }
     }
 }

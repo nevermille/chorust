@@ -6,7 +6,6 @@ pub struct ChorusError {
     #[serde(rename = "codeRetour")]
     pub code_retour: i64,
 
-    #[serde(rename = "libelle")]
     pub libelle: String,
 }
 
