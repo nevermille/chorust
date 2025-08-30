@@ -27,6 +27,7 @@ pub fn main() {
 
     let mut chorus = Chorus::default();
     chorus.switch_to_sandbox_mode(matches.opt_present("sandbox"));
+
     let response = chorus
         .connect_with_oauth(&client_id, &client_secret)
         .unwrap();

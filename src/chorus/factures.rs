@@ -1,5 +1,6 @@
 use crate::data::factures::DeposerFluxData;
 use crate::enums::ChorusResponse;
+use crate::macros::log::debug;
 use crate::response::factures::DeposerFluxResponse;
 use crate::Chorus;
 use squared_api_wrapper::response::StringObjectResponse;
@@ -35,8 +36,13 @@ impl Chorus {
 
         let body = serde_json::to_string(&data)?;
 
+        debug!("Trying to upload document to {}", &self.deposer_flux_url());
+
         let upload =
             squared_api_wrapper::post(&mut curl, Some(body.as_bytes()), None)?.to_string_response();
+
+        debug!("Upload got a status {}", u32::from(upload.http_code));
+
         let object = ChorusResponse::from_json(&upload.raw_data);
 
         Ok(upload.add_object(object))

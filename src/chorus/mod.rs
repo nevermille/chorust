@@ -1,6 +1,7 @@
 mod factures;
 
 use crate::enums::OAuthResponse;
+use crate::macros::log::debug;
 use base64::prelude::*;
 use base64::Engine;
 use curl::easy::{Easy, List};
@@ -35,6 +36,8 @@ impl Chorus {
                 self.oauth_url = "oauth.piste.gouv.fr".to_string();
             }
         }
+
+        debug!("New used urls : {} and {}", &self.root_url, &self.oauth_url)
     }
 
     fn oauth_connect_url(&self) -> String {
@@ -78,8 +81,16 @@ impl Chorus {
 
         let form = form.finish();
 
+        debug!(
+            "Trying to connect with OAuth to {}",
+            &self.oauth_connect_url()
+        );
+
         let connect =
             squared_api_wrapper::post(&mut curl, Some(form.as_bytes()), None)?.to_string_response();
+
+        debug!("Connection got a status {}", u32::from(connect.http_code));
+
         let object = OAuthResponse::from_json(&connect.raw_data)?;
 
         // We save the information if connection was succesful
