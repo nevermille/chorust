@@ -3,7 +3,7 @@ use std::fmt::Display;
 
 #[derive(Default, Clone, Serialize, Deserialize)]
 pub struct ChorusError {
-    #[serde(rename = "codeRetour")]
+    #[serde(rename = "code_retour")]
     pub code_retour: i64,
 
     pub libelle: String,
