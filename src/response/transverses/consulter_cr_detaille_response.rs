@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Default, Clone, Serialize, Deserialize)]
 pub struct ConsulterCrDetailleResponse {
     #[serde(default)]
     #[serde(rename = "codeInterfaceDepotFlux")]
@@ -36,7 +36,7 @@ pub struct ConsulterCrDetailleResponse {
     pub nom_fichier: String,
 }
 
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Default, Clone, Serialize, Deserialize)]
 pub struct ConsulterCRDetailleResponseErreurDP {
     #[serde(default)]
     #[serde(rename = "identifiantDestinataire")]
@@ -55,7 +55,7 @@ pub struct ConsulterCRDetailleResponseErreurDP {
     pub numero_dp: String,
 }
 
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Default, Clone, Serialize, Deserialize)]
 pub struct ConsulterCRDetailleResponseErreurTechnique {
     #[serde(default)]
     #[serde(rename = "codeErreur")]

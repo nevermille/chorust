@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Default, Clone, Serialize, Deserialize)]
 pub struct OauthSuccessfulResponse {
     /// The access token string as issued by the authorization server
     pub access_token: String,
