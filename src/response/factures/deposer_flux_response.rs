@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Default, Clone, Serialize, Deserialize)]
 pub struct DeposerFluxResponse {
-    #[serde(rename = "code_retour")]
+    #[serde(rename = "codeRetour")]
     pub code_retour: i64,
 
     #[serde(rename = "dateDepot")]
