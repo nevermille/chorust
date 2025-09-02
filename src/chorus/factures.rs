@@ -34,7 +34,14 @@ impl Chorus {
         curl.url(&self.deposer_flux_url())?;
         curl.http_headers(headers)?;
 
-        let body = serde_json::to_string(&data)?;
+        let body = match data.nom_fichier.is_empty() {
+            false => serde_json::to_string(&data),
+            true => {
+                let mut data = data.clone();
+                data.nom_fichier = "flux.xml".to_string();
+                serde_json::to_string(&data)
+            }
+        }?;
 
         debug!("Trying to upload document to {}", &self.deposer_flux_url());
 
