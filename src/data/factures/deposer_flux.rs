@@ -20,7 +20,7 @@ pub struct DeposerFluxData {
     pub id_utilisateur_courant: Option<i64>,
 
     #[serde(default)]
-    #[serde(rename = "nom_fichier")]
+    #[serde(rename = "nomFichier")]
     pub nom_fichier: String,
 
     #[serde(default)]
